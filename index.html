@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <style>
   :root {
     --terracotta: #8B3A32;
@@ -168,19 +169,22 @@
 
   /* ── PARALLAX ── */
   .parallax {
-    background-attachment: fixed;
+    position: relative;
+    min-height: 55vh;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .parallax-img {
+    position: absolute; inset: -20%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 45vh;
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
+    will-change: transform;
   }
   .parallax::before {
     content: '';
     position: absolute; inset: 0;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0,0,0,0.22);
     z-index: 1;
   }
   .parallax::after {
@@ -191,7 +195,8 @@
     z-index: 1;
   }
   @media (max-width: 768px) {
-    .parallax { background-attachment: scroll; min-height: 30vh; }
+    .parallax { min-height: 35vh; }
+    .parallax-img { inset: -10%; }
   }
 
   @media (max-width: 768px) {
@@ -239,7 +244,7 @@
 </section>
 
 <!-- ═══ PARALLAX 1 ═══ -->
-<div class="parallax" style="background-image:url('img/KritiExterior.jpg')"></div>
+<div class="parallax"><div class="parallax-img" style="background-image:url('img/KritiExterior.jpg')"></div></div>
 
 <div class="container">
   <div class="stats-row">
@@ -282,7 +287,7 @@
 </section>
 
 <!-- ═══ PARALLAX 2 ═══ -->
-<div class="parallax" style="background-image:url('img/pool.jpg')"></div>
+<div class="parallax"><div class="parallax-img" style="background-image:url('img/pool.jpg')"></div></div>
 
 <!-- ═══ IN PROGRESS ═══ -->
 <section class="section" id="progress">
@@ -363,7 +368,7 @@
 </section>
 
 <!-- ═══ PARALLAX 3 ═══ -->
-<div class="parallax" style="background-image:url('img/amaxa.jpg')"></div>
+<div class="parallax"><div class="parallax-img" style="background-image:url('img/amaxa.jpg')"></div></div>
 
 <!-- ═══ QUESTIONS ═══ -->
 <section class="section" id="questions">
@@ -407,7 +412,7 @@
 </section>
 
 <!-- ═══ PARALLAX 4 ═══ -->
-<div class="parallax" style="background-image:url('img/stadium.jpg')"></div>
+<div class="parallax"><div class="parallax-img" style="background-image:url('img/stadium.jpg')"></div></div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
@@ -440,6 +445,33 @@
     </div>
   </div>
 </footer>
+
+<script>
+// Lenis smooth scroll
+const lenis = new Lenis({
+  duration: 1.4,
+  easing: (t) => 1 - Math.pow(1 - t, 3),
+  smoothWheel: true,
+  smoothTouch: false,
+});
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// JS Parallax
+const parallaxEls = document.querySelectorAll('.parallax-img');
+function updateParallax() {
+  parallaxEls.forEach(el => {
+    const rect = el.parentElement.getBoundingClientRect();
+    const vh = window.innerHeight;
+    if (rect.bottom < 0 || rect.top > vh) return;
+    const center = rect.top + rect.height/2;
+    const offset = (center - vh/2) * 0.15;
+    el.style.transform = `translateY(${offset}px)`;
+  });
+}
+lenis.on('scroll', updateParallax);
+updateParallax();
+</script>
 
 </body>
 </html>
