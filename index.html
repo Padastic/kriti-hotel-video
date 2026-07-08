@@ -166,6 +166,34 @@
   .footer .logo-sm img { height: 32px; }
   .footer-bottom { margin-top: 32px; padding-top: 20px; border-top: 1px solid #333; font-size: 0.7rem; color: #666; text-align: center; }
 
+  /* ── PARALLAX ── */
+  .parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 45vh;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .parallax::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1;
+  }
+  .parallax::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('https://www.kriti-hotel.gr/admin/wp-content/uploads/2018/01/kriti-hotel-favicon.png') center/100px no-repeat;
+    opacity: 0.07;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .parallax { background-attachment: scroll; min-height: 30vh; }
+  }
+
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
     .hero h1 { font-size: 1.8rem; }
@@ -210,6 +238,9 @@
   <div class="date-badge">Ιούλιος 2026</div>
 </section>
 
+<!-- ═══ PARALLAX 1 ═══ -->
+<div class="parallax" style="background-image:url('img/KritiExterior.jpg')"></div>
+
 <div class="container">
   <div class="stats-row">
     <div class="stat-card"><div class="num green">14</div><div class="label">Ολοκληρωμένα / Αποδεκτά</div></div>
@@ -249,6 +280,9 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ PARALLAX 2 ═══ -->
+<div class="parallax" style="background-image:url('img/pool.jpg')"></div>
 
 <!-- ═══ IN PROGRESS ═══ -->
 <section class="section" id="progress">
@@ -328,6 +362,9 @@
   </div>
 </section>
 
+<!-- ═══ PARALLAX 3 ═══ -->
+<div class="parallax" style="background-image:url('img/amaxa.jpg')"></div>
+
 <!-- ═══ QUESTIONS ═══ -->
 <section class="section" id="questions">
   <div class="container">
@@ -368,6 +405,9 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ PARALLAX 4 ═══ -->
+<div class="parallax" style="background-image:url('img/stadium.jpg')"></div>
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="footer">
