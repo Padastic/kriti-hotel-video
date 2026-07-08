@@ -173,13 +173,16 @@
     min-height: 55vh;
     overflow: hidden;
     display: flex; align-items: center; justify-content: center;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 55vh;
   }
   .parallax-img {
-    position: absolute; inset: -20%;
+    position: absolute; inset: -10%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     will-change: transform;
+    transform: translateZ(0);
   }
   .parallax::before {
     content: '';
@@ -449,7 +452,7 @@
 <script>
 // Lenis smooth scroll
 const lenis = new Lenis({
-  duration: 1.4,
+  duration: 0.8,
   easing: (t) => 1 - Math.pow(1 - t, 3),
   smoothWheel: true,
   smoothTouch: false,
@@ -465,7 +468,7 @@ function updateParallax() {
     const vh = window.innerHeight;
     if (rect.bottom < 0 || rect.top > vh) return;
     const center = rect.top + rect.height/2;
-    const offset = (center - vh/2) * 0.15;
+    const offset = (center - vh/2) * 0.08;
     el.style.transform = `translateY(${offset}px)`;
   });
 }
