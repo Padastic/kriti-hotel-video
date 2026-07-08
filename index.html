@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <style>
   :root {
     --terracotta: #8B3A32;
@@ -450,29 +449,23 @@
 </footer>
 
 <script>
-// Lenis smooth scroll
-const lenis = new Lenis({
-  duration: 0.8,
-  easing: (t) => 1 - Math.pow(1 - t, 3),
-  smoothWheel: true,
-  smoothTouch: false,
-});
-function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
-
-// JS Parallax
+// JS Parallax on native scroll
 const parallaxEls = document.querySelectorAll('.parallax-img');
+let ticking = false;
 function updateParallax() {
   parallaxEls.forEach(el => {
     const rect = el.parentElement.getBoundingClientRect();
     const vh = window.innerHeight;
     if (rect.bottom < 0 || rect.top > vh) return;
     const center = rect.top + rect.height/2;
-    const offset = (center - vh/2) * 0.08;
+    const offset = (center - vh/2) * 0.06;
     el.style.transform = `translateY(${offset}px)`;
   });
+  ticking = false;
 }
-lenis.on('scroll', updateParallax);
+window.addEventListener('scroll', () => {
+  if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
+}, { passive: true });
 updateParallax();
 </script>
 
