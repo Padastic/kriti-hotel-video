@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Προδιαγραφές Νέου Βίντεο — Kriti Hotel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracotta: #8B3A32;
+    --terracotta-light: #A05048;
+    --terracotta-dark: #6B2A24;
+    --beige: #F5F0EB;
+    --beige-dark: #E8DDD4;
+    --white: #FFFFFF;
+    --off-white: #FAFAFA;
+    --text: #1a1a1a;
+    --text-muted: #666;
+    --text-light: #999;
+    --border: #e8e3dd;
+    --green: #2D8A4E;
+    --green-bg: #EDF7F0;
+    --amber: #B87A2B;
+    --amber-bg: #FDF6ED;
+    --blue: #3A6B8B;
+    --blue-bg: #EDF3F8;
+    --shadow: 0 2px 16px rgba(0,0,0,0.06);
+    --radius: 12px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: #f8f6f4;
+    padding: 10px 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar .container {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .topbar a { color: var(--text-muted); text-decoration: none; }
+  .topbar a:hover { color: var(--terracotta); }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--white);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header .container {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+  .logo img { height: 48px; width: auto; }
+  .logo-text { text-align: left; line-height: 1.15; }
+  .logo-text .hotel {
+    font-size: 1.1rem; font-weight: 700; color: var(--terracotta);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .logo-text .location {
+    font-size: 0.65rem; color: var(--text-muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .header-nav { display: flex; gap: 28px; align-items: center; }
+  .header-nav a {
+    text-decoration: none; color: var(--text); font-size: 0.8rem;
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .header-nav a:hover, .header-nav a.active { color: var(--terracotta); }
+
+  /* ── CONTAINER ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--beige) 0%, var(--beige-dark) 100%);
+    padding: 80px 0 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; opacity: 0.06;
+    background: url('https://www.kriti-hotel.gr/admin/wp-content/uploads/2018/01/kriti-hotel-favicon.png') center/contain no-repeat;
+  }
+  .hero-icon { margin-bottom: 24px; opacity: 0.7; }
+  .hero-icon img { height: 36px; }
+  .hero h1 {
+    font-size: 3.2rem; font-weight: 300; letter-spacing: 0.06em;
+    color: var(--terracotta); margin-bottom: 12px;
+  }
+  .hero .subtitle {
+    font-size: 1.2rem; color: var(--text-muted); font-weight: 400;
+  }
+  .hero .date-badge {
+    display: inline-block; margin-top: 28px;
+    background: var(--white); padding: 8px 20px; border-radius: 30px;
+    font-size: 0.8rem; color: var(--text-muted);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin: -36px auto 48px; position: relative; z-index: 2;
+  }
+  .stat-card {
+    background: var(--white); border-radius: var(--radius);
+    padding: 24px; text-align: center; box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .stat-card .num {
+    font-size: 2.6rem; font-weight: 700; line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-card .num.green { color: var(--green); }
+  .stat-card .num.amber { color: var(--amber); }
+  .stat-card .num.blue { color: var(--blue); }
+  .stat-card .label {
+    font-size: 0.8rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500;
+  }
+
+  /* ── SECTION ── */
+  .section { padding: 64px 0; }
+  .section:nth-child(even) { background: var(--off-white); }
+  .section-header {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+  }
+  .section-header img { height: 24px; opacity: 0.6; }
+  .section h2 {
+    font-size: 1.9rem; font-weight: 600; letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  .section .section-sub {
+    color: var(--text-muted); font-size: 1rem; margin-bottom: 32px;
+  }
+  .section-card {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .section-card.green { border-left: 4px solid var(--green); }
+  .section-card.amber { border-left: 4px solid var(--amber); }
+  .section-card.blue  { border-left: 4px solid var(--blue); }
+
+  .card-head {
+    padding: 18px 24px; background: var(--off-white);
+    font-weight: 600; font-size: 0.85rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .card-head .count {
+    background: var(--white); padding: 3px 10px; border-radius: 20px;
+    font-size: 0.75rem; color: var(--text-muted); font-weight: 500;
+  }
+
+  /* ── ITEMS ── */
+  .items { padding: 8px 0; }
+  .item {
+    display: flex; gap: 14px; padding: 14px 24px;
+    border-bottom: 1px solid #f5f3f0; align-items: flex-start;
+    transition: background 0.15s;
+  }
+  .item:last-child { border-bottom: none; }
+  .item:hover { background: #fcfbf9; }
+  .item-icon {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; margin-top: 1px;
+  }
+  .item-icon.done { background: var(--green-bg); color: var(--green); }
+  .item-icon.progress { background: var(--amber-bg); color: var(--amber); }
+  .item-icon.question { background: var(--blue-bg); color: var(--blue); }
+
+  .item-body { flex: 1; }
+  .item-title { font-size: 1rem; font-weight: 500; color: var(--text); }
+  .item-note { font-size: 0.88rem; color: var(--text-muted); margin-top: 2px; font-style: italic; }
+
+  .item-tag {
+    font-size: 0.68rem; padding: 3px 10px; border-radius: 20px;
+    font-weight: 500; white-space: nowrap; letter-spacing: 0.02em;
+  }
+  .tag-done { background: var(--green-bg); color: var(--green); }
+  .tag-ai { background: #F3E8FF; color: #7C3AED; }
+  .tag-drone { background: #E0F2FE; color: #0284C7; }
+  .tag-shoot { background: #FEF3C7; color: #B45309; }
+  .tag-edit { background: #FCE7F3; color: #BE185D; }
+  .tag-pending { background: var(--amber-bg); color: var(--amber); }
+
+  /* ── CATEGORY SUB-HEAD ── */
+  .category-head {
+    padding: 12px 24px; background: #fafaf8;
+    font-size: 0.78rem; font-weight: 600; color: var(--terracotta);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #1a1816; color: #bbb; padding: 48px 0 32px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  }
+  .footer h4 {
+    color: var(--white); font-size: 0.8rem; letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .footer p, .footer a { font-size: 0.82rem; line-height: 1.8; color: #999; text-decoration: none; }
+  .footer a:hover { color: var(--white); }
+  .footer .logo-sm { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .footer .logo-sm img { height: 32px; }
+  .footer .logo-sm span { color: var(--white); font-weight: 600; font-size: 0.9rem; }
+  .footer-bottom {
+    margin-top: 32px; padding-top: 20px; border-top: 1px solid #333;
+    font-size: 0.7rem; color: #666; text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .hero h1 { font-size: 1.8rem; }
+    .stats-row { grid-template-columns: 1fr; margin-top: -20px; }
+    .header-nav { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .item { flex-wrap: wrap; }
+    .item-tag { margin-left: 42px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP BAR ═══ -->
+<div class="topbar">
+  <div class="container">
+    <span>📍 Νικηφόρου Φωκά & Κύπρου, 73100, Χανιά, Κρήτη</span>
+    <span>Τηλ: +30 28210 51881 · <a href="mailto:info@kriti-hotel.gr">info@kriti-hotel.gr</a></span>
+  </div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="container">
+    <a class="logo" href="https://www.kriti-hotel.gr">
+      <img src="https://www.kriti-hotel.gr/admin/wp-content/uploads/2018/01/kriti-hotel-favicon.png" alt="Kriti Hotel">
+      <div class="logo-text">
+        <div class="hotel">Kriti Hotel</div>
+        <div class="location">Chania · Crete</div>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="#done">Ολοκληρωμένα</a>
+      <a href="#progress">Σε Εξέλιξη</a>
+      <a href="#questions">Εκκρεμότητες</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-icon">
+    <img src="https://www.kriti-hotel.gr/admin/wp-content/uploads/2018/01/kriti-hotel-favicon.png" alt="">
+  </div>
+  <h1>Προδιαγραφές Νέου Βίντεο</h1>
+  <p class="subtitle">Μια αναλυτική επισκόπηση των αλλαγών και βελτιώσεων<br>για το νέο promotional video του ξενοδοχείου</p>
+  <div class="date-badge">Ιούλιος 2026</div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="container">
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="num green">14</div>
+      <div class="label">Ολοκληρωμένα / Αποδεκτά</div>
+    </div>
+    <div class="stat-card">
+      <div class="num amber">30</div>
+      <div class="label">Σε Εξέλιξη</div>
+    </div>
+    <div class="stat-card">
+      <div class="num blue">3</div>
+      <div class="label">Χρειάζονται Απάντηση</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 1: DONE ═══ -->
+<section class="section" id="done">
+  <div class="container">
+    <div class="section-header">
+      <img src="https://www.kriti-hotel.gr/admin/wp-content/uploads/2018/01/kriti-hotel-favicon.png" alt="">
+      <h2>Ολοκληρωμένα & Αποδεκτά</h2>
+    </div>
+    <p class="section-sub">Αλλαγές που έχουν ήδη υλοποιηθεί ή κρίθηκαν ικανοποιητικές</p>
+    <div class="section-card green">
+      <div class="card-head">
+        ✅ Ολοκληρωμένες Αλλαγές <span class="count">14</span>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Διάρκεια & ροή</div>
+            <div class="item-note">Κάτω από 2 λεπτά, φυσική χρονική ακολουθία από το πρωί προς το βράδυ</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Αφαίρεση διπλού check-in</div>
+            <div class="item-note">Το ζευγάρι με τις βαλίτσες που φαινόταν να ξαναμπαίνει</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Διόρθωση ρακόρ ρούχων</div>
+            <div class="item-note">Ασυνέχεια πουλόβερ στο 1:16–1:18</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Διόρθωση "κολλήματος" (stutter)</div>
+            <div class="item-note">Στο χρονικό σημείο 0:17–0:18</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Αποφυγή έντονων zoom</div>
+            <div class="item-note">Τόσο σε εσωτερικούς όσο και σε εξωτερικούς χώρους</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Ευθυγράμμιση κτιρίου</div>
+            <div class="item-note">Δεν γέρνει πλέον, όπως φαινόταν στο 1:06</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Σκηνή άφιξης</div>
+            <div class="item-note">Προσθήκη πλάνου με επισκέπτη και αποσκευές</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Αντισηπτικό ρεσεψιόν</div>
+            <div class="item-note">Απομάκρυνση του μαύρου αντισηπτικού από το κάδρο</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Αφαίρεση σκάλες</div>
+            <div class="item-note">Αφαίρεση του πλάνου στο 1:11</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Φωτεινότητα δωματίου</div>
+            <div class="item-note">Διόρθωση του σκοτεινού δωματίου στο 0:49–0:50</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Μαύρη σκιά στη θέα</div>
+            <div class="item-note">Αφαίρεση της αμόρσας που έκρυβε τη θέα στο 1:00–1:02</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Zoom πισίνας</div>
+            <div class="item-note">Απόκρυψη αυτοκινήτων, δρόμου και πάρκινγκ</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Εξοπλισμός καθαρισμού</div>
+            <div class="item-note">Απόκρυψη κοντάρι και άδειες βάσεις ομπρελών στο 0:45</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+        <div class="item">
+          <div class="item-icon done">✓</div>
+          <div class="item-body">
+            <div class="item-title">Κλείσιμο με λογότυπο</div>
+            <div class="item-note">Απαλό blur και εμφάνιση του λογότυπου του ξενοδοχείου</div>
+          </div>
+          <span class="item-tag tag-done">Έτοιμο</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 2: IN PROGRESS ═══ -->
+<section class="section" id="progress">
+  <div class="container">
+    <div class="section-header">
+      <img src="https://www.kriti-hotel.gr/admin/wp-content/uploads/2018/01/kriti-hotel-favicon-inverted.png" alt="">
+      <h2>Σε Εξέλιξη</h2>
+    </div>
+    <p class="section-sub">Νέο οπτικό υλικό που δημιουργείται αυτή την περίοδο</p>
+    <div class="section-card amber">
+      <div class="card-head">
+        🔄 Δημιουργία Νέου Υλικού <span class="count">30</span>
+      </div>
+
+      <!-- ── ΕΞΩΤΕΡΙΚΟ ── -->
+      <div class="category-head">🏨 Εξωτερικό & Πρόσοψη</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Νέα εναέρια πλάνα</div>
+            <div class="item-note">Αντικατάσταση των μουντών drone λήψεων με νέες, υψηλής ευκρίνειας</div>
+          </div>
+          <span class="item-tag tag-drone">Drone</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Πρόσοψη με φυσικό φως</div>
+            <div class="item-note">Λήψη χωρίς σκιές, με το φως της ημέρας να πέφτει μπροστά στο κτίριο</div>
+          </div>
+          <span class="item-tag tag-drone">Drone</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Αφαίρεση κεραιών ταράτσας</div>
+            <div class="item-note">Ψηφιακή επεξεργασία για απομάκρυνση των κεραιών</div>
+          </div>
+          <span class="item-tag tag-edit">Επεξεργασία</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Αποφυγή γύρω κτιρίων</div>
+            <div class="item-note">Λήψεις που κρύβουν πολυκατοικίες και στάδιο</div>
+          </div>
+          <span class="item-tag tag-drone">Drone</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Πλάνα Χανίων</div>
+            <div class="item-note">Καλοφωτισμένες εξωτερικές λήψεις της πόλης</div>
+          </div>
+          <span class="item-tag tag-pending">Εκκρεμεί άδεια</span>
+        </div>
+      </div>
+
+      <!-- ── LOBBY ── -->
+      <div class="category-head">🛋️ Lobby & Χώροι Υποδοχής</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Νέοι καναπέδες</div>
+            <div class="item-note">Ανάδειξη των ανανεωμένων επίπλων του lobby</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Άγαλμα & έκταση χώρου</div>
+            <div class="item-note">Λήψη από το άγαλμα προς το βάθος για να φανεί το σύνολο</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Κοινόχρηστοι χώροι</div>
+            <div class="item-note">Ευρύτερη προβολή των χώρων υποδοχής</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+      </div>
+
+      <!-- ── ΔΩΜΑΤΙΑ ── -->
+      <div class="category-head">🛏️ Δωμάτια</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Κουρτίνες ανοιχτές</div>
+            <div class="item-note">Πλάνα με όλες τις κουρτίνες (λεπτές & χοντρές) ανοιχτές</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Θέα θάλασσα</div>
+            <div class="item-note">Λήψη από το εσωτερικό του δωματίου προς τη θάλασσα</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Θέα βουνό</div>
+            <div class="item-note">Πλάνο που αναδεικνύει τη θέα προς το βουνό</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Δυτική πλευρά</div>
+            <div class="item-note">Λήψη προς την πόλη — αναμονή για το σημείο λήψης</div>
+          </div>
+          <span class="item-tag tag-pending">Ερώτηση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Σουίτα ευρυγώνια</div>
+            <div class="item-note">Ευρυγώνια λήψη από απόσταση για ανάδειξη του συνόλου</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Τρίκλινο / Family Room</div>
+            <div class="item-note">Πλάνα από το οικογενειακό δωμάτιο</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Μπάνιο τρίκλινου</div>
+            <div class="item-note">Ιδιαίτερη προβολή του μπάνιου στο οικογενειακό δωμάτιο</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Λεπτομέρειες δωματίου</div>
+            <div class="item-note">Τοιχογραφίες, κέρασμα υποδοχής, καφετιέρα</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+      </div>
+
+      <!-- ── ΜΠΟΥΦΕΣ ── -->
+      <div class="category-head">🥐 Πρωινός Μπουφές</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Κοντινές λήψεις φαγητού</div>
+            <div class="item-note">Φροντισμένες λήψεις με πλούσιο φωτισμό</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Τραπέζι πλούσιο</div>
+            <div class="item-note">Γεμάτο, εντυπωσιακό στήσιμο</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Ύφος πρωινού</div>
+            <div class="item-note">Να φαίνεται υπηρεσία πρωινού, όχι εστιατόριο</div>
+          </div>
+          <span class="item-tag tag-pending">Ερώτηση</span>
+        </div>
+      </div>
+
+      <!-- ── ΠΙΣΙΝΑ ── -->
+      <div class="category-head">🏊 Πισίνα</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Έντονος ήλιος</div>
+            <div class="item-note">Λήψεις σε ώρα με δυνατό φυσικό φωτισμό</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Ξαπλώστρες ευθυγραμμισμένες</div>
+            <div class="item-note">Απόλυτη τάξη και συμμετρία</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Ομπρέλες κλειστές</div>
+            <div class="item-note">Ανεμπόδιστη θέα του εξοπλισμού</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Κούρεμα θάμνου</div>
+            <div class="item-note">Για να φαίνονται τα πουφ — σε συνεννόηση με το ξενοδοχείο</div>
+          </div>
+          <span class="item-tag tag-pending">Ξενοδοχείο</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Ηλιοθεραπεία & σέρβις</div>
+            <div class="item-note">Πλάνο με επισκέπτες που απολαμβάνουν φαγητό και ποτό</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+      </div>
+
+      <!-- ── ΜΠΑΡ ── -->
+      <div class="category-head">🍸 Μπαρ</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Εντυπωσιακή παρασκευή ποτού</div>
+            <div class="item-note">Γύρισμα με bartender, shaker, παγάκια, προσεγμένο ποτήρι</div>
+          </div>
+          <span class="item-tag tag-shoot">Γύρισμα</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Μόνο χέρια</div>
+            <div class="item-note">Στο ίδιο γύρισμα, χωρίς πρόσωπο</div>
+          </div>
+          <span class="item-tag tag-shoot">Γύρισμα</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Μπαλκόνι μπαρ</div>
+            <div class="item-note">Drone λήψη από έξω προς τα μέσα, φόντο το ξενοδοχείο</div>
+          </div>
+          <span class="item-tag tag-drone">Drone</span>
+        </div>
+      </div>
+
+      <!-- ── ΕΓΚΑΤΑΣΤΑΣΕΙΣ ── -->
+      <div class="category-head">🏋️ Εγκαταστάσεις</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Fitness Center</div>
+            <div class="item-note">Περισσότερα όργανα, προσεγμένη γωνία λήψης</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Αίθουσα Συνεδριάσεων</div>
+            <div class="item-note">Λήψη από έξω μέσα από τη γυάλινη πόρτα, διάφανος φωτισμός</div>
+          </div>
+          <span class="item-tag tag-ai">Ψηφιακή απεικόνιση</span>
+        </div>
+      </div>
+
+      <!-- ── ΤΕΛΙΚΟ ── -->
+      <div class="category-head">🌙 Τελικό Πλάνο</div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Νυχτερινή λήψη</div>
+            <div class="item-note">Drone από ψηλά προς τα κάτω — όλα τα φώτα αναμμένα</div>
+          </div>
+          <span class="item-tag tag-drone">Drone</span>
+        </div>
+        <div class="item">
+          <div class="item-icon progress">◉</div>
+          <div class="item-body">
+            <div class="item-title">Μουσική επένδυση</div>
+            <div class="item-note">Αναζήτηση νέας, πιο αισιόδοξης μουσικής από επαγγελματική βιβλιοθήκη</div>
+          </div>
+          <span class="item-tag tag-edit">Επεξεργασία</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 3: QUESTIONS ═══ -->
+<section class="section" id="questions">
+  <div class="container">
+    <div class="section-header">
+      <img src="https://www.kriti-hotel.gr/admin/wp-content/uploads/2018/01/kriti-hotel-favicon.png" alt="">
+      <h2>Χρειαζόμαστε την Άποψή Σας</h2>
+    </div>
+    <p class="section-sub">Τρία σημεία που θα θέλαμε τη δική σας καθοδήγηση για να προχωρήσουμε</p>
+    <div class="section-card blue">
+      <div class="card-head">
+        ❓ Προς Απάντηση <span class="count">3</span>
+      </div>
+      <div class="items">
+
+        <div class="item">
+          <div class="item-icon question">1</div>
+          <div class="item-body">
+            <div class="item-title">Λήψη δυτικής πλευράς</div>
+            <div class="item-note">Για τα πλάνα από τη δυτική πλευρά των δωματίων (προς την πόλη): από πού προτιμάτε να γίνει η λήψη; Ταράτσα, παράθυρο δωματίου ή drone;</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-icon question">2</div>
+          <div class="item-body">
+            <div class="item-title">Προβολή πρωινού</div>
+            <div class="item-note">Θέλετε να προβληθεί ως μπουφές ή να δείξουμε σερβίρισμα στο δωμάτιο (room service); Η κατεύθυνση των πλάνων αλλάζει ανάλογα.</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-icon question">3</div>
+          <div class="item-body">
+            <div class="item-title">Πλάνα Χανίων — Άδειες</div>
+            <div class="item-note">Για την ένταξη εξωτερικών λήψεων της πόλης: έχετε ήδη εξασφαλίσει τις απαραίτητες άδειες για εναέρια ή επίγεια λήψη σε κεντρικά σημεία ή χρειάζεται να κινηθούμε γραφειοκρατικά;</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo-sm">
+          <img src="https://static.wixstatic.com/media/229341_74fce042919c40cab30b46eb7953e68a~mv2.png" alt="Indigo View" style="height:32px;width:auto;filter:brightness(0) invert(1);">
+        </div>
+        <p style="margin-top:8px;"><strong style="color:#fff;">Indigo View Productions</strong></p>
+        <p>Creative Media Productions</p>
+        <p><a href="https://www.indigoview.com">www.indigoview.com</a></p>
+      </div>
+      <div>
+        <h4>Το Βίντεο</h4>
+        <p><a href="#done">Ολοκληρωμένες Αλλαγές</a></p>
+        <p><a href="#progress">Σε Εξέλιξη</a></p>
+        <p><a href="#questions">Χρειάζονται Απάντηση</a></p>
+      </div>
+      <div>
+        <h4>Υπεύθυνος Παραγωγής</h4>
+        <p style="color:#fff;font-size:0.95rem;"><strong>Δημήτρης Ξενάκης</strong></p>
+        <p>Executive Producer · Co-Founder</p>
+        <p><a href="mailto:dimitris@indigoview.com">dimitris@indigoview.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © Indigo View Productions 2026 &nbsp;|&nbsp; Δημήτρης Ξενάκης — Παραγωγός &nbsp;|&nbsp; Προδιαγραφές Βίντεο · Ιούλιος 2026
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
